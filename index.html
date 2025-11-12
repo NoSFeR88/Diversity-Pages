@@ -12,16 +12,16 @@
         :root {
             --color-primary: #7C3AED; /* Morado Ritmo */
             --color-secondary: #1E3A8A; /* Azul NoSFeR Tech (Oscuro) */
-            --color-background: #f8fafc; /* Fondo muy claro */
+            --color-background-light: #f4f7fa; /* Fondo más suave */
             --color-dark: #1f2937;
             --color-text-subtle: #6b7280;
             --color-card-bg: #ffffff;
-            --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-card: 0 6px 16px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease-in-out;
-            --border-radius: 10px;
+            --border-radius: 12px;
         }
 
-        /* Base */
+        /* Base y Fondo Mejorado */
         * {
             margin: 0;
             padding: 0;
@@ -32,221 +32,186 @@
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--color-dark);
-            background-color: var(--color-background);
+            background-color: var(--color-background-light);
+            /* Sutil degradado para hacerlo menos plano */
+            background-image: linear-gradient(180deg, var(--color-background-light) 0%, #eef2ff 100%);
         }
 
         /* Contenedor Principal y Estructura */
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 0 1.5rem 3rem;
+            padding: 0 1.5rem 4rem; /* Más espacio inferior */
         }
 
         /* Encabezado */
         header {
-            padding: 3rem 0 2rem;
+            padding: 4rem 0 2.5rem; /* Más espacio superior */
             display: flex;
             align-items: center;
             gap: 1.5rem;
-            border-bottom: 1px solid #e5e7eb;
-            margin-bottom: 2rem;
+            border-bottom: 2px solid #dde1e6; /* Borde más pronunciado */
+            margin-bottom: 2.5rem;
         }
 
         header .logo-ritmo-box {
-            width: 56px;
-            height: 56px;
+            width: 64px; /* Un poco más grande */
+            height: 64px;
             background: var(--color-primary);
-            border-radius: var(--border-radius);
+            border-radius: 50%; /* Circular para más energía */
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 8px rgba(124, 58, 237, 0.4);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.5);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
         }
 
         header h1 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--color-dark);
         }
 
         header .lead {
-            font-size: 0.95rem;
-            color: var(--color-text-subtle);
+            font-size: 1rem;
+            color: var(--color-secondary);
+            font-weight: 400;
         }
 
         /* Layout Grid */
         .grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2rem;
+            gap: 2.5rem; /* Más espacio entre columnas */
         }
 
         /* Tarjetas (Cards) */
         .card {
             background-color: var(--color-card-bg);
-            padding: 1.5rem;
+            padding: 2rem; /* Más padding interno */
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-card);
-            margin-bottom: 1.5rem;
-            border-top: 4px solid var(--color-primary); /* Toque de branding */
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--color-primary); /* Borde a la izquierda para un look moderno */
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
         }
 
         .card h2, .card h3 {
             color: var(--color-secondary);
             margin-bottom: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
             border-bottom: 1px solid #f3f4f6;
             padding-bottom: 0.5rem;
         }
 
         .card h2 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
         }
         
         .card h3 {
-            font-size: 1.25rem;
-            margin-top: 1rem;
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
         }
 
         /* Listas y Párrafos */
         .card p, .card li {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--color-dark);
         }
         
         .card ol, .card ul {
-            margin: 0.5rem 0 1rem 1.25rem;
+            margin: 0.75rem 0 1.25rem 1.25rem;
             padding: 0;
         }
 
         .card li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
-
-        /* Iconografía (para la sección Flexibilidad) */
+        
+        /* Iconografía (para la sección Flexibilidad) - Estilo más visual */
         .concept-item {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.25rem;
             border-radius: var(--border-radius);
-            background-color: #eef2ff;
+            background-color: #f7f3ff; /* Fondo muy claro morado */
         }
         
         .concept-item i {
-            font-size: 1.8rem;
+            font-size: 2rem; /* Íconos más grandes */
             color: var(--color-primary);
+            flex-shrink: 0;
+            line-height: 1.2;
+        }
+        
+        .concept-item strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            color: var(--color-dark);
+        }
+        
+        .concept-item div p {
+            font-size: 0.95rem;
+            color: var(--color-text-subtle);
         }
 
         /* Formulario */
         aside .card {
-            background-color: var(--color-card-bg);
-            border-top-color: var(--color-primary);
+            border-left-color: var(--color-secondary); /* Color diferente para destacar el CTA */
             position: sticky;
-            top: 20px; /* Mantener el formulario visible al hacer scroll */
+            top: 20px;
         }
 
-        form label {
-            display: block;
-            margin-top: 1rem;
-            margin-bottom: 0.25rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--color-dark);
-        }
-
-        form input[type="text"],
-        form input[type="email"],
-        form button {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
-            border: 1px solid #d1d5db;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        form input:focus {
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
-            outline: none;
-        }
-
-        form button {
-            margin-top: 1.5rem;
-            background-color: var(--color-primary);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 4px 8px rgba(124, 58, 237, 0.4);
-        }
-
-        form button:hover {
-            background-color: #6d28d9;
-            transform: translateY(-1px);
-        }
-
-        /* Checkbox y Texto Legal */
-        form label[style] { /* Para el checkbox */
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            font-weight: 400;
-            font-size: 0.85rem;
-        }
-        
-        form input[type="checkbox"] {
-            width: auto;
-        }
-
-        .aside-footer-text {
-            font-size: 0.75rem;
-            color: var(--color-text-subtle);
-            margin-top: 1rem;
-        }
-        
-        .aside-footer-text a {
-            color: var(--color-primary);
-            text-decoration: none;
-        }
-        
-        .aside-footer-text a:hover {
-            text-decoration: underline;
-        }
+        /* Estilos de formulario (sin cambios estructurales mayores) */
+        form label { margin-top: 1rem; }
+        form input[type="text"], form input[type="email"], form button { padding: 0.85rem 1rem; }
+        form button { background-color: var(--color-primary); }
+        form button:hover { background-color: #6d28d9; }
 
         /* Footer */
         footer {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #e5e7eb;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid #dde1e6;
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--color-text-subtle);
         }
 
         footer .nosfer-logo {
-            margin: 0.75rem auto 0.5rem;
-            max-width: 100px;
+            margin: 1rem auto 0.75rem;
+            max-width: 120px; /* Logo más grande */
             height: auto;
             display: block;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         /* Responsive Desktop */
         @media (min-width: 768px) {
             .grid {
-                grid-template-columns: 2fr 1.5fr; /* Más compacto y asimétrico */
+                grid-template-columns: 3fr 2fr; /* Columna de contenido un poco más ancha */
             }
             
             header h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             header .lead {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -261,7 +226,7 @@
             </div>
             <div>
                 <h1>Ritmo — Acceso anticipado **BETA FLEXIBLE**</h1>
-                <div class="lead">Prueba Ritmo antes del lanzamiento oficial. **Hábitos flexibles como tu vida real.** Plazas limitadas. Acceso para Android.</div>
+                <div class="lead">Prueba Ritmo, el *habit tracker* diseñado para la **vida real**. Regístrate y forma parte de la revolución de los hábitos.</div>
             </div>
         </header>
 
@@ -270,59 +235,65 @@
             <!-- Columna de Contenido (2/3 en Desktop) -->
             <div>
                 
-                <!-- Beneficio Único: Flexibilidad vs Rigidez -->
+                <!-- Beneficio Único: Flexibilidad vs Rigidez (Texto Profesionalizado) -->
                 <div class="card">
-                    <h2>La Diferenciación: **Flexibilidad vs Rigidez**</h2>
-                    <p>Ritmo entiende que la vida no es lineal. Nuestro sistema se basa en la flexibilidad para que construir hábitos sea sostenible, no una fuente de culpa.</p>
+                    <h2>**Hábitos flexibles** como tu vida real</h2>
+                    <p>Ritmo se basa en un concepto único de NoSFeR Tech: eliminar la culpa y la rigidez. Nuestro sistema te permite ser consistente sin ser perfecto, adaptándose a los imprevistos de tu día a día.</p>
                     
-                    <h3 style="margin-top: 1.5rem;">Cómo lo hacemos:</h3>
+                    <h3 style="margin-top: 1.5rem;">Te damos la fórmula para el éxito sostenible:</h3>
                     
+                    <!-- 1. Rachas Adaptables -->
                     <div class="concept-item">
-                        <i style="color: #22c55e;">&#10003;</i> <!-- Checkmark verde -->
+                        <i style="color: #22c55e;">&#10003;</i> 
                         <div>
-                            <strong>Flexibilidad Real.</strong> Ajusta metas sin "romper" tu racha. Registra el progreso, no solo el cumplimiento binario (sí/no).
+                            <strong>Rachas Inteligentes.</strong>
+                            <p>Ajusta tus metas de la semana sin perder tu racha. Nuestro sistema registra tu esfuerzo real, permitiendo cambios sin penalizarte.</p>
                         </div>
                     </div>
 
+                    <!-- 2. Consistencia Sostenible -->
                     <div class="concept-item">
-                        <i style="color: #ef4444;">&#10005;</i> <!-- Cruz roja -->
+                        <i style="color: #ef4444;">&#10005;</i>
                         <div>
-                            <strong>Adiós Rigidez.</strong> No más penalizaciones por un día libre. Nuestro algoritmo celebra la consistencia, no la perfección.
+                            <strong>Adiós al Binarismo.</strong>
+                            <p>Un día libre no es un fracaso. Te ayudamos a celebrar la consistencia a largo plazo, en lugar de exigirte una perfección diaria agotadora.</p>
                         </div>
                     </div>
                     
+                    <!-- 3. Enfoque en el Progreso -->
                     <div class="concept-item">
-                        <i style="color: #f97316;">&#9889;</i> <!-- Rayo naranja -->
+                        <i style="color: #f97316;">&#9889;</i>
                         <div>
-                            <strong>Estrategia Emocional.</strong> Hemos optimizado la app para abordar el problema emocional de la frustración al fallar.
+                            <strong>Mentalidad de Crecimiento.</strong>
+                            <p>Hemos optimizado la interfaz y las métricas para enfocarte siempre en lo que has avanzado, transformando el error en una oportunidad de aprendizaje.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Detalles de la Beta -->
                 <div class="card">
-                    <h2>Cómo Funciona el Acceso Anticipado</h2>
+                    <h2>Detalles del Acceso Anticipado</h2>
                     <ol>
-                        <li>Regístrate con tu email en el formulario de la derecha.</li>
-                        <li>Recibirás un correo con el enlace para unirte al grupo de testers y a la descarga de la APK.</li>
-                        <li>Instala la app, prueba las funcionalidades y envía feedback en nuestro formulario de **Google Forms**.</li>
+                        <li>**Regístrate:** Introduce tu email en el formulario de la derecha (plazas limitadas).</li>
+                        <li>**Descarga:** Recibirás un correo con el enlace para unirte al grupo de testers y la descarga directa de la APK para Android.</li>
+                        <li>**Feedback:** Prueba las funciones flexibles de Ritmo y envíanos tu opinión en nuestro formulario directo de **Google Forms**.</li>
                     </ol>
                     
-                    <h3>Beneficios para Testers</h3>
+                    <h3>Ventajas Exclusivas para Testers</h3>
                     <ul>
-                        <li>Acceso prioritario a nuevas funciones flexibles.</li>
-                        <li>Influye en el producto y recibe recompensas especiales por tu feedback.</li>
-                        <li>Soporte directo del equipo de Ritmo y NoSFeR Tech.</li>
+                        <li>Acceso prioritario a nuevas funciones antes que nadie.</li>
+                        <li>Influencia directa en el desarrollo del producto y recompensas únicas.</li>
+                        <li>Soporte técnico y comunicación directa con el equipo de NoSFeR Tech.</li>
                     </ul>
                     
-                    <p style="margin-top:1.5rem;"><strong>¿Es gratis?</strong> Sí, el acceso a la beta es totalmente gratuito. <strong>¿Qué dispositivos?</strong> Android 8.0+ recomendado. Estamos trabajando en iOS.</p>
+                    <p style="margin-top:1.5rem;"><strong>Dispositivos:</strong> Beta disponible exclusivamente para Android 8.0+.</p>
                 </div>
             </div>
 
-            <!-- Columna del Formulario (1/3 en Desktop) -->
+            <!-- Columna del Formulario (Sticky) -->
             <aside>
                 <div class="card">
-                    <h3>Únete como Tester (Plazas Limitadas)</h3>
+                    <h3>Únete como Tester (Acceso Exclusivo)</h3>
                     <!-- Formulario ORIGINAL ENLAZADO AL APPS SCRIPT -->
                     <form action="https://script.google.com/macros/s/AKfycbz8jaRxOebpx0RGNW0ZSPDB6xIKpOVX_gYmCwNpBNuJWiZhoNUix89hbVRjIceGxZGb/exec" method="POST">
                         <label for="name">Nombre (opcional)</label>
@@ -336,19 +307,19 @@
 
                         <label style="margin-top:8px">
                             <input type="checkbox" name="consent" required /> 
-                            Acepto recibir emails sobre la beta y la política de privacidad.
+                            Acepto recibir emails sobre la beta y la <a href="https://nosfer88.github.io/ritmo-privacy/" target="_blank" style="color: var(--color-primary); text-decoration: underline;">política de privacidad</a>.
                         </label>
 
                         <input type="hidden" name="_token" value="ritmo_secret_2025" />
-                        <!-- Redirección al formulario de éxito (debe existir un 'success.html' o similar) -->
+                        <!-- Redirección al formulario de éxito -->
                         <input type="hidden" name="_redirect" value="https://nosfer88.github.io/Diversity-Pages/success.html">
 
-                        <button type="submit">Quiero ser tester</button>
+                        <button type="submit">Quiero mi acceso BETA</button>
                     </form>
 
                     <div class="aside-footer-text">
-                        <p>Recibirás un correo con instrucciones. Política de privacidad: <a href="https://nosfer88.github.io/ritmo-privacy/" target="_blank">aquí</a>.</p>
-                        <p style="margin-top: 0.5rem;">Envía Feedback: <a href="https://forms.gle/2Wd48dkUKhxqednS8" target="_blank">Google Form</a></p>
+                        <p style="margin-top: 1rem;">**IMPORTANTE:** Recibirás un correo de confirmación con los pasos de instalación.</p>
+                        <p style="margin-top: 0.5rem;">Envía Feedback (Google Form): <a href="https://forms.gle/2Wd48dkUKhxqednS8" target="_blank">¡Tu opinión nos ayuda a crecer!</a></p>
                     </div>
                 </div>
             </aside>
@@ -356,9 +327,9 @@
 
         <!-- Pie de Página (NoSFeR Tech Branding) -->
         <footer>
-            <p>© 2025 Ritmo. Hecho con ❤️ por **NoSFeR Tech**.</p>
-            <!-- Logo de Nosfer Tech Integrado - Ajustado para bajo contraste -->
-            <img src="Nosfer_Tech_Logo.png" alt="Logo de NoSFeR Tech" class="nosfer-logo">
+            <p>© 2025 Ritmo. Desarrollado con ❤️ y tecnología por **NoSFeR Tech**.</p>
+            <!-- Logo de Nosfer Tech Integrado -->
+            <img src="Nosfer_Tech.png" alt="Logo de NoSFeR Tech" class="nosfer-logo">
         </footer>
     </div>
 </body>
